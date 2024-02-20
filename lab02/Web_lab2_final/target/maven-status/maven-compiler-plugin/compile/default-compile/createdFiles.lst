@@ -1,0 +1,9 @@
+servlets/AreaCheckServlet.class
+beans/PointsArray.class
+filter/MainFilter.class
+validators/HitStatus.class
+validators/Validator.class
+beans/Point.class
+servlets/ControllerServlet.class
+validators/IValidator.class
+servlets/ControllerServlet$1.class

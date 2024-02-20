@@ -1,0 +1,155 @@
+@path-fonts: 'fonts';
+.font-names
+{
+    @font-face {
+        font-family: 'VCR';
+        src: url('@{path-fonts}/better-vcr.ttf') format('truetype');
+    }
+}
+*{
+    font-family: 'VCR', serif;
+    font-size: 1em;
+}
+
+
+@main-background: #EEEEEE;
+@element-background: #00ADB5;
+@text-color: #222831;
+@green-status: #00b509;
+@red-status: #b50300;
+
+
+//Some mixins
+.shadowing{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.bordering{
+    background-color: @main-background;
+    border-radius: 7px;
+    border: 2px solid @text-color;
+}
+
+//----
+
+body {
+    background-color: @main-background;
+    padding: 0 20px 20px 20px;
+    color: @text-color;
+}
+
+header{
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.swal-popup {
+    font-size: 5em !important;
+}
+
+label {
+    &.form-label {
+        margin: 4% 10% 4% 2%;
+    }
+    &.R-radio-labels{
+        margin-right: 5%;
+    }
+}
+
+
+input {
+    .shadowing();
+    &.main-button{
+        .shadowing();
+        .bordering();
+        width: 180px;
+        height: 30px;
+        margin: 0 4% 4% 2%;
+        &:hover{
+            background-color: @element-background;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+    }
+    &[type=checkbox]{
+        .bordering();
+        transform: scale(1.5);
+        margin-right: 10%;
+        text-align: center;
+    }
+    &[type=text]{
+        background-color: @main-background;
+        .bordering();
+        padding: 1px 1px 1px 5px;
+        height: 25px;
+    }
+    &[type=radio]{
+        .bordering();
+        appearance: none;
+        -webkit-appearance: none;
+        margin-right: 1%;
+        padding: 11px;
+        accent-color: @text-color;
+        &:checked{
+            background-color: @element-background;
+        }
+    }
+}
+
+table{
+    border-spacing: 10px;
+    border-collapse: separate;
+    line-height: 200%;
+    width: 400px;
+}
+
+div {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-around;
+
+    #X-input-container{
+        flex-flow: row nowrap;
+    }
+
+    #X-checkbox-container{
+        flex-flow: row wrap;
+    }
+
+    #Y-input-container {
+        min-width: 700px;
+    }
+    #buttons-container{
+        justify-content: flex-end;
+    }
+    &.input-container {
+        justify-content: flex-start;
+    }
+}
+
+table {
+    &#results {
+        border-collapse: collapse;
+        margin: 20px;
+        width: 100%;
+        text-align: center;
+        th{
+            background: color-mix(in srgb, @element-background 50%, @main-background);
+            color: @text-color;
+            padding: 15px;
+        }
+        tr{
+            &:nth-of-type(odd){
+                background-color: darken(@main-background, 10%);
+            }
+        }
+        td{
+            &.green-status{
+                color: @green-status;
+            }
+            &.red-status{
+                color: @red-status;
+            }
+        }
+    }
+}
